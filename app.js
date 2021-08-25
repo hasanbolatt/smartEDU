@@ -1,10 +1,27 @@
 const express = require('express');
+const mongoose = require('mongoose');
+
+const pageRoute = require('./routes/pageRoute');
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.status(200).send('Ana sayfa');
+mongoose.connect('mongodb://localhost/smartedu-db', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: true,
+    useCreateIndex: true,
+}).then(() => {
+    console.log('Veri tabanı bağlantısı başarılı');
 });
+
+//Temp engine
+app.set('view engine', 'ejs');
+
+//Middleware
+app.use(express.static('public'));
+
+//Routes
+app.use('/', pageRoute);
 
 const port = 3000;
 app.listen(port, () => {
