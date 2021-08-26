@@ -6,7 +6,7 @@ const CourseSchema = new Schema({
     name: {
         type: String,
         unique: true,
-        required: true
+        required: true//Zorunu doldurma alanı olup olmaması için
     },
     description: {
         type: String,

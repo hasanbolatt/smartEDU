@@ -9,3 +9,10 @@ exports.getAboutPage = (req, res) => {
     pageName: 'about',
   });
 };
+
+
+exports.getContactPage = (req, res) => {
+  res.status(200).render('contact', {
+    pageName: 'contact',
+  });
+};
